@@ -11,3 +11,8 @@ ureq = "2"
 httpstatus = "0.1"
 openssl = "0.10"
 xml-rs = "0.8"
+codice_fiscale = "0.3"
+lazy_static = "1"
+[build-dependencies]
+cc = "1.0"
+foreign-types = "0.5"

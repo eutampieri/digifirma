@@ -1,2 +1,6 @@
 /target
 Cargo.lock
+.vscode
+prova.p7s
+out.pdf
+*.o
