@@ -36,12 +36,12 @@ pub fn verify(der: &[u8]) -> Result<SignedMessage, ErrorStack> {
                 fiscal_code: codice_fiscale::CodiceFiscale::parse(
                     nid_mapping::get(Nid::CommonName, subject_name)[0]
                         .split("/")
-                        .nth(0)
+                        .next()
                         .unwrap(),
                 )
                 .unwrap(),
                 document_id: nid_mapping::get(Nid::SerialNumber, subject_name)[0]
-                    .split("-")
+                    .split('-')
                     .nth(1)
                     .unwrap()
                     .to_owned(),

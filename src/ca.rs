@@ -1,13 +1,11 @@
-use xml;
-
-const CA_URL: &'static str = "https://eidas.agid.gov.it/TL/TSL-IT.xml";
+const CA_URL: &str = "https://eidas.agid.gov.it/TL/TSL-IT.xml";
 
 fn wrap_at(string: &str, size: usize) -> String {
     let mut v = vec![];
     let mut cur = string;
     while !cur.is_empty() {
         let (chunk, rest) = cur.split_at(std::cmp::min(size, cur.len()));
-        v.push(chunk.clone());
+        v.push(chunk);
         cur = rest;
     }
     v.join("\n")
@@ -21,9 +19,7 @@ pub fn get_ca() -> openssl::x509::store::X509Store {
     let mut keep: bool = false;
     xml.into_iter()
         .filter_map(|e| match e {
-            Ok(xml::reader::XmlEvent::StartElement {
-                name, attributes, ..
-            }) => {
+            Ok(xml::reader::XmlEvent::StartElement { name, .. }) => {
                 if name.local_name == "X509Certificate" {
                     keep = true;
                 }
