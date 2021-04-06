@@ -3,6 +3,10 @@ name = "digifirma"
 version = "0.1.0"
 authors = ["Eugenio Tampieri <eugenio@eutampieri.eu>"]
 edition = "2018"
+description = "Italian CIE P7M parser and signature checker"
+repository = "https://github.com/eutampieri/digifirma"
+license = "Unlicense"
+keywords = ["italy"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
