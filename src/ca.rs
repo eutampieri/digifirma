@@ -13,7 +13,7 @@ fn wrap_at(string: &str, size: usize) -> String {
     v.join("\n")
 }
 
-pub fn get_ca() -> Vec<openssl::x509::X509> {
+pub fn get_ca() -> openssl::x509::store::X509Store {
     let client: Box<dyn super::http_client::HttpClient>;
     client = Box::new(super::http_client::Ureq {});
     let raw_xml = client.get(CA_URL).unwrap();
@@ -53,5 +53,12 @@ pub fn get_ca() -> Vec<openssl::x509::X509> {
             )
         })
         .map(|x| openssl::x509::X509::from_pem(x.as_bytes()).unwrap())
-        .collect()
+        .fold(
+            openssl::x509::store::X509StoreBuilder::new().unwrap(),
+            |mut s, i| {
+                s.add_cert(i).unwrap();
+                s
+            },
+        )
+        .build()
 }
