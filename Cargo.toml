@@ -9,3 +9,5 @@ edition = "2018"
 [dependencies]
 ureq = "2"
 httpstatus = "0.1"
+openssl = "0.10"
+xml-rs = "0.8"
