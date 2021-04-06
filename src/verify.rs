@@ -11,6 +11,7 @@ lazy_static! {
         openssl::stack::Stack::new().unwrap();
 }
 
+/// Verify a p7m file (DER encoded)
 pub fn verify(der: &[u8]) -> Result<SignedMessage, ErrorStack> {
     let cades = openssl::pkcs7::Pkcs7::from_der(der)?;
     let mut file = vec![];
