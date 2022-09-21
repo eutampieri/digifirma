@@ -1,22 +1,22 @@
 [package]
 name = "digifirma"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Eugenio Tampieri <eugenio@eutampieri.eu>"]
 edition = "2018"
 description = "Italian CIE P7M parser and signature checker"
 repository = "https://github.com/eutampieri/digifirma"
 license = "Unlicense"
 keywords = ["italy"]
+categories = ["cryptography"]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-ureq = "2"
+ureq = "2.5"
 httpstatus = "0.1"
 openssl = "0.10"
 xml-rs = "0.8"
-codice_fiscale = "0.3"
-lazy_static = "1"
+codice_fiscale = "0.4"
+lazy_static = "1.4"
 [build-dependencies]
 cc = "1.0"
-foreign-types = "0.5"
